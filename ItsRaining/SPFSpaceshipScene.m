@@ -107,9 +107,9 @@ static inline CGFloat skRand(CGFloat low, CGFloat high) {
 
 - (void)addRock
 {
-    SKSpriteNode *rock = [[SKSpriteNode alloc] initWithColor:[SKColor brownColor] size:CGSizeMake(8,8)];
+    SKSpriteNode *rock = [[SKSpriteNode alloc] initWithColor:[SKColor lightGrayColor] size:CGSizeMake(8,8)];
     SKSpriteNode *cloud = (SKSpriteNode *)[self childNodeWithName:@"cloud"];
-    rock.position = CGPointMake(skRand(cloud.position.x, cloud.position.x + cloud.size.width), cloud.position.y);
+    rock.position = CGPointMake(skRand(cloud.position.x - (cloud.size.width / 2), cloud.position.x + (cloud.size.width / 2)), cloud.position.y - (cloud.size.width / 2));
     rock.name = @"rock";
     rock.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:rock.size];
     rock.physicsBody.usesPreciseCollisionDetection = YES;

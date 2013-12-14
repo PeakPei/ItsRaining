@@ -21,6 +21,9 @@
 		3283B1C7185CEEE700C28BF7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3283B1A9185CEEE700C28BF7 /* UIKit.framework */; };
 		3283B1CF185CEEE700C28BF7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3283B1CD185CEEE700C28BF7 /* InfoPlist.strings */; };
 		3283B1D1185CEEE700C28BF7 /* ItsRainingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3283B1D0185CEEE700C28BF7 /* ItsRainingTests.m */; };
+		3283B1DB185CEF0400C28BF7 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3283B1DA185CEF0400C28BF7 /* SpriteKit.framework */; };
+		3283B1DE185CEF8700C28BF7 /* SPFHelloScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3283B1DD185CEF8700C28BF7 /* SPFHelloScene.m */; };
+		3283B1E1185CF3C700C28BF7 /* SPFSpaceshipScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3283B1E0185CF3C700C28BF7 /* SPFSpaceshipScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,11 @@
 		3283B1CC185CEEE700C28BF7 /* ItsRainingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ItsRainingTests-Info.plist"; sourceTree = "<group>"; };
 		3283B1CE185CEEE700C28BF7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3283B1D0185CEEE700C28BF7 /* ItsRainingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItsRainingTests.m; sourceTree = "<group>"; };
+		3283B1DA185CEF0400C28BF7 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		3283B1DC185CEF8700C28BF7 /* SPFHelloScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPFHelloScene.h; sourceTree = "<group>"; };
+		3283B1DD185CEF8700C28BF7 /* SPFHelloScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPFHelloScene.m; sourceTree = "<group>"; };
+		3283B1DF185CF3C700C28BF7 /* SPFSpaceshipScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPFSpaceshipScene.h; sourceTree = "<group>"; };
+		3283B1E0185CF3C700C28BF7 /* SPFSpaceshipScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPFSpaceshipScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3283B1DB185CEF0400C28BF7 /* SpriteKit.framework in Frameworks */,
 				3283B1A8185CEEE700C28BF7 /* CoreGraphics.framework in Frameworks */,
 				3283B1AA185CEEE700C28BF7 /* UIKit.framework in Frameworks */,
 				3283B1A6185CEEE700C28BF7 /* Foundation.framework in Frameworks */,
@@ -101,6 +110,7 @@
 		3283B1A4185CEEE700C28BF7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3283B1DA185CEF0400C28BF7 /* SpriteKit.framework */,
 				3283B1A5185CEEE700C28BF7 /* Foundation.framework */,
 				3283B1A7185CEEE700C28BF7 /* CoreGraphics.framework */,
 				3283B1A9185CEEE700C28BF7 /* UIKit.framework */,
@@ -119,6 +129,10 @@
 				3283B1BB185CEEE700C28BF7 /* SPFViewController.m */,
 				3283B1BD185CEEE700C28BF7 /* Images.xcassets */,
 				3283B1AC185CEEE700C28BF7 /* Supporting Files */,
+				3283B1DC185CEF8700C28BF7 /* SPFHelloScene.h */,
+				3283B1DD185CEF8700C28BF7 /* SPFHelloScene.m */,
+				3283B1DF185CF3C700C28BF7 /* SPFSpaceshipScene.h */,
+				3283B1E0185CF3C700C28BF7 /* SPFSpaceshipScene.m */,
 			);
 			path = ItsRaining;
 			sourceTree = "<group>";
@@ -251,6 +265,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3283B1B6185CEEE700C28BF7 /* SPFAppDelegate.m in Sources */,
+				3283B1DE185CEF8700C28BF7 /* SPFHelloScene.m in Sources */,
+				3283B1E1185CF3C700C28BF7 /* SPFSpaceshipScene.m in Sources */,
 				3283B1BC185CEEE700C28BF7 /* SPFViewController.m in Sources */,
 				3283B1B2185CEEE700C28BF7 /* main.m in Sources */,
 			);

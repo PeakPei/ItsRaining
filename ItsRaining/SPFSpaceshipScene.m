@@ -48,6 +48,7 @@
 - (SKSpriteNode *)newCloud
 {
     SKSpriteNode *cloud = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(64, 32)];
+    cloud.name = @"cloud";
     
     SKAction *hover = [SKAction sequence:@[
                                            [SKAction waitForDuration:1.0],
@@ -107,7 +108,8 @@ static inline CGFloat skRand(CGFloat low, CGFloat high) {
 - (void)addRock
 {
     SKSpriteNode *rock = [[SKSpriteNode alloc] initWithColor:[SKColor brownColor] size:CGSizeMake(8,8)];
-    rock.position = CGPointMake(skRand(0, self.size.width), self.size.height-50);
+    SKSpriteNode *cloud = (SKSpriteNode *)[self childNodeWithName:@"cloud"];
+    rock.position = CGPointMake(skRand(cloud.position.x, cloud.position.x + cloud.size.width), cloud.position.y);
     rock.name = @"rock";
     rock.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:rock.size];
     rock.physicsBody.usesPreciseCollisionDetection = YES;

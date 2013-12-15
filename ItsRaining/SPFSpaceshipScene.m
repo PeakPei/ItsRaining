@@ -8,6 +8,7 @@
 
 #import "SPFSpaceshipScene.h"
 #import "SPFCloud.h"
+#import "SPFUtilities.h"
 
 @interface SPFSpaceshipScene ()
 
@@ -82,7 +83,7 @@
 - (void)addCloud
 {
     SPFCloud *cloud = [[SPFCloud alloc] init];
-    cloud.position = CGPointMake(-64, CGRectGetMidY(self.frame) + 200);
+    cloud.position = CGPointMake(-64, CGRectGetMidY(self.frame) + [SPFUtilities skRandWithLow:100 andHigh:400]);
     [self addChild:cloud];
 }
 

@@ -88,8 +88,14 @@
 
 - (void)didSimulatePhysics
 {
-    [self enumerateChildNodesWithName:@"rock" usingBlock:^(SKNode *node, BOOL *stop) {
-        if (node.position.y < 0)
+    [self enumerateChildNodesWithName:@"cloud" usingBlock:^(SKNode *node, BOOL *stop) {
+        [self enumerateChildNodesWithName:@"rain" usingBlock:^(SKNode *node, BOOL *stop) {
+            if (node.position.y < 0)
+            {
+                [node removeFromParent];
+            }
+        }];
+        if (node.position.x > 800)
             [node removeFromParent];
     }];
 }

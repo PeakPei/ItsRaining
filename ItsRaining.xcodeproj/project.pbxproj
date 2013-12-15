@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32776F3F185D2A4D003DFD71 /* SPFCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = 32776F3E185D2A4D003DFD71 /* SPFCloud.m */; };
 		3283B1A6185CEEE700C28BF7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3283B1A5185CEEE700C28BF7 /* Foundation.framework */; };
 		3283B1A8185CEEE700C28BF7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3283B1A7185CEEE700C28BF7 /* CoreGraphics.framework */; };
 		3283B1AA185CEEE700C28BF7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3283B1A9185CEEE700C28BF7 /* UIKit.framework */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		32776F3D185D2A4D003DFD71 /* SPFCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPFCloud.h; sourceTree = "<group>"; };
+		32776F3E185D2A4D003DFD71 /* SPFCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPFCloud.m; sourceTree = "<group>"; };
 		3283B1A2185CEEE700C28BF7 /* ItsRaining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItsRaining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3283B1A5185CEEE700C28BF7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3283B1A7185CEEE700C28BF7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -133,6 +136,8 @@
 				3283B1DD185CEF8700C28BF7 /* SPFHelloScene.m */,
 				3283B1DF185CF3C700C28BF7 /* SPFSpaceshipScene.h */,
 				3283B1E0185CF3C700C28BF7 /* SPFSpaceshipScene.m */,
+				32776F3D185D2A4D003DFD71 /* SPFCloud.h */,
+				32776F3E185D2A4D003DFD71 /* SPFCloud.m */,
 			);
 			path = ItsRaining;
 			sourceTree = "<group>";
@@ -265,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3283B1B6185CEEE700C28BF7 /* SPFAppDelegate.m in Sources */,
+				32776F3F185D2A4D003DFD71 /* SPFCloud.m in Sources */,
 				3283B1DE185CEF8700C28BF7 /* SPFHelloScene.m in Sources */,
 				3283B1E1185CF3C700C28BF7 /* SPFSpaceshipScene.m in Sources */,
 				3283B1BC185CEEE700C28BF7 /* SPFViewController.m in Sources */,
@@ -479,6 +485,7 @@
 				3283B1D6185CEEE700C28BF7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3283B1D7185CEEE700C28BF7 /* Build configuration list for PBXNativeTarget "ItsRainingTests" */ = {
 			isa = XCConfigurationList;
@@ -487,6 +494,7 @@
 				3283B1D9185CEEE700C28BF7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

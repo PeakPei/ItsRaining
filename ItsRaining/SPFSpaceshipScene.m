@@ -7,6 +7,7 @@
 //
 
 #import "SPFSpaceshipScene.h"
+#import "SPFCloud.h"
 
 @interface SPFSpaceshipScene ()
 
@@ -34,7 +35,7 @@
     spaceship.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)-150);
     [self addChild:spaceship];
     
-    SKSpriteNode *cloud = [self newCloud];
+    SPFCloud *cloud = [SPFCloud newCloud];
     cloud.position = CGPointMake(CGRectGetMidX(self.frame) - 50, CGRectGetMidY(self.frame) + 200);
     [self addChild:cloud];
     
@@ -43,21 +44,6 @@
                                                 [SKAction waitForDuration:0.10 withRange:0.15]
                                                 ]];
     [self runAction: [SKAction repeatActionForever:makeRocks]];
-}
-
-- (SKSpriteNode *)newCloud
-{
-    SKSpriteNode *cloud = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(64, 32)];
-    cloud.name = @"cloud";
-    
-    SKAction *hover = [SKAction sequence:@[
-                                           [SKAction waitForDuration:1.0],
-                                           [SKAction moveByX:100 y:0.0 duration:2.0],
-                                           [SKAction waitForDuration:1.0],
-                                           [SKAction moveByX:-100.0 y:0.0 duration:2.0]]];
-    [cloud runAction: [SKAction repeatActionForever:hover]];
-    
-    return cloud;
 }
 
 - (SKSpriteNode *)newSpaceship

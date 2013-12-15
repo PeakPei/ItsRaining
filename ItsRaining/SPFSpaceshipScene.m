@@ -35,15 +35,11 @@
     spaceship.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)-150);
     [self addChild:spaceship];
     
-    SPFCloud *cloud = [SPFCloud newCloud];
+    SPFCloud *cloud = [[SPFCloud alloc] init];
     cloud.position = CGPointMake(CGRectGetMidX(self.frame) - 50, CGRectGetMidY(self.frame) + 200);
     [self addChild:cloud];
     
-    SKAction *makeRocks = [SKAction sequence: @[
-                                                [SKAction performSelector:@selector(addRock) onTarget:self],
-                                                [SKAction waitForDuration:0.10 withRange:0.15]
-                                                ]];
-    [self runAction: [SKAction repeatActionForever:makeRocks]];
+
 }
 
 - (SKSpriteNode *)newSpaceship
@@ -81,25 +77,6 @@
     [light runAction: blinkForever];
     
     return light;
-}
-
-static inline CGFloat skRandf() {
-    return rand() / (CGFloat) RAND_MAX;
-}
-
-static inline CGFloat skRand(CGFloat low, CGFloat high) {
-    return skRandf() * (high - low) + low;
-}
-
-- (void)addRock
-{
-    SKSpriteNode *rock = [[SKSpriteNode alloc] initWithColor:[SKColor lightGrayColor] size:CGSizeMake(8,8)];
-    SKSpriteNode *cloud = (SKSpriteNode *)[self childNodeWithName:@"cloud"];
-    rock.position = CGPointMake(skRand(cloud.position.x - (cloud.size.width / 2), cloud.position.x + (cloud.size.width / 2)), cloud.position.y - (cloud.size.width / 2));
-    rock.name = @"rock";
-    rock.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:rock.size];
-    rock.physicsBody.usesPreciseCollisionDetection = YES;
-    [self addChild:rock];
 }
 
 - (void)didSimulatePhysics

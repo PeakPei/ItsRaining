@@ -10,6 +10,6 @@
 
 @interface SPFCloud : SKSpriteNode
 
-+ (SPFCloud *)newCloud;
+- (SPFCloud *)init;
 
 @end

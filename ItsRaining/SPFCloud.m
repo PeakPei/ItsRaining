@@ -16,10 +16,7 @@
     self.name = @"cloud";
     
     SKAction *hover = [SKAction sequence:@[
-                                           [SKAction waitForDuration:1.0],
-                                           [SKAction moveByX:100 y:0.0 duration:2.0],
-                                           [SKAction waitForDuration:1.0],
-                                           [SKAction moveByX:-100.0 y:0.0 duration:2.0]]];
+                                           [SKAction moveByX:1200 y:0.0 duration:skRand(4, 12)]]];
     SKAction *cloudMovement = [SKAction repeatActionForever:hover];
     
     SKAction *rain = [SKAction sequence: @[

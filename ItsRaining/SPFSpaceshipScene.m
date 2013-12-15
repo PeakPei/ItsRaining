@@ -35,11 +35,11 @@
     spaceship.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)-150);
     [self addChild:spaceship];
     
-    SPFCloud *cloud = [[SPFCloud alloc] init];
-    cloud.position = CGPointMake(CGRectGetMidX(self.frame) - 50, CGRectGetMidY(self.frame) + 200);
-    [self addChild:cloud];
-    
-
+    SKAction *makeItRain = [SKAction sequence: @[
+                                                 [SKAction performSelector:@selector(addCloud) onTarget:self],
+                                                 [SKAction waitForDuration:8 withRange:4]]];
+    SKAction *makeItAlwaysRain = [SKAction repeatActionForever:makeItRain];
+    [self runAction:makeItAlwaysRain];
 }
 
 - (SKSpriteNode *)newSpaceship
@@ -77,6 +77,13 @@
     [light runAction: blinkForever];
     
     return light;
+}
+
+- (void)addCloud
+{
+    SPFCloud *cloud = [[SPFCloud alloc] init];
+    cloud.position = CGPointMake(-64, CGRectGetMidY(self.frame) + 200);
+    [self addChild:cloud];
 }
 
 - (void)didSimulatePhysics

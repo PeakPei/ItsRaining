@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		32776F3F185D2A4D003DFD71 /* SPFCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = 32776F3E185D2A4D003DFD71 /* SPFCloud.m */; };
+		32776F42185D3691003DFD71 /* SPFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 32776F41185D3691003DFD71 /* SPFUtilities.m */; };
 		3283B1A6185CEEE700C28BF7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3283B1A5185CEEE700C28BF7 /* Foundation.framework */; };
 		3283B1A8185CEEE700C28BF7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3283B1A7185CEEE700C28BF7 /* CoreGraphics.framework */; };
 		3283B1AA185CEEE700C28BF7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3283B1A9185CEEE700C28BF7 /* UIKit.framework */; };
@@ -40,6 +41,8 @@
 /* Begin PBXFileReference section */
 		32776F3D185D2A4D003DFD71 /* SPFCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPFCloud.h; sourceTree = "<group>"; };
 		32776F3E185D2A4D003DFD71 /* SPFCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPFCloud.m; sourceTree = "<group>"; };
+		32776F40185D3691003DFD71 /* SPFUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPFUtilities.h; sourceTree = "<group>"; };
+		32776F41185D3691003DFD71 /* SPFUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPFUtilities.m; sourceTree = "<group>"; };
 		3283B1A2185CEEE700C28BF7 /* ItsRaining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItsRaining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3283B1A5185CEEE700C28BF7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3283B1A7185CEEE700C28BF7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -138,6 +141,8 @@
 				3283B1E0185CF3C700C28BF7 /* SPFSpaceshipScene.m */,
 				32776F3D185D2A4D003DFD71 /* SPFCloud.h */,
 				32776F3E185D2A4D003DFD71 /* SPFCloud.m */,
+				32776F40185D3691003DFD71 /* SPFUtilities.h */,
+				32776F41185D3691003DFD71 /* SPFUtilities.m */,
 			);
 			path = ItsRaining;
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 				3283B1E1185CF3C700C28BF7 /* SPFSpaceshipScene.m in Sources */,
 				3283B1BC185CEEE700C28BF7 /* SPFViewController.m in Sources */,
 				3283B1B2185CEEE700C28BF7 /* main.m in Sources */,
+				32776F42185D3691003DFD71 /* SPFUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

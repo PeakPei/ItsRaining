@@ -7,6 +7,7 @@
 //
 
 #import "SPFCloud.h"
+#import "SPFUtilities.h"
 
 @implementation SPFCloud
 
@@ -16,7 +17,7 @@
     self.name = @"cloud";
     
     SKAction *hover = [SKAction sequence:@[
-                                           [SKAction moveByX:1200 y:0.0 duration:skRand(4, 12)]]];
+                                           [SKAction moveByX:1200 y:0.0 duration:[SPFUtilities skRandWithLow:4 andHigh:12]]]];
     SKAction *cloudMovement = [SKAction repeatActionForever:hover];
     
     SKAction *rain = [SKAction sequence: @[
@@ -34,19 +35,13 @@
 - (void)makeRain
 {
     SKSpriteNode *rain = [[SKSpriteNode alloc] initWithColor:[SKColor lightGrayColor] size:CGSizeMake(8,8)];
-    rain.position = CGPointMake(skRand(-1 * (self.size.width / 2), (self.size.width / 2)), -1 * (self.size.width / 2));
+    rain.position = CGPointMake([SPFUtilities skRandWithLow:-1 * (self.size.width / 2) andHigh:(self.size.width / 2)], -1 * (self.size.width / 2));
     rain.name = @"rain";
     rain.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:rain.size];
     rain.physicsBody.usesPreciseCollisionDetection = YES;
     [self addChild:rain];
 }
 
-static inline CGFloat skRandf() {
-    return rand() / (CGFloat) RAND_MAX;
-}
 
-static inline CGFloat skRand(CGFloat low, CGFloat high) {
-    return skRandf() * (high - low) + low;
-}
 
 @end

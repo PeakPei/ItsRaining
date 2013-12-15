@@ -37,7 +37,7 @@
     
     SKAction *makeItRain = [SKAction sequence: @[
                                                  [SKAction performSelector:@selector(addCloud) onTarget:self],
-                                                 [SKAction waitForDuration:8 withRange:4]]];
+                                                 [SKAction waitForDuration:5 withRange:4]]];
     SKAction *makeItAlwaysRain = [SKAction repeatActionForever:makeItRain];
     [self runAction:makeItAlwaysRain];
 }

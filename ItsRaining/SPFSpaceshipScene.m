@@ -36,9 +36,13 @@
     spaceship.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)-150);
     [self addChild:spaceship];
     
+    SKSpriteNode *umbrella = [self newUmbrella];
+    umbrella.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) - 300);
+    [self addChild:umbrella];
+    
     SKAction *makeItRain = [SKAction sequence: @[
                                                  [SKAction performSelector:@selector(addCloud) onTarget:self],
-                                                 [SKAction waitForDuration:5 withRange:4]]];
+                                                 [SKAction waitForDuration:2 withRange:1]]];
     SKAction *makeItAlwaysRain = [SKAction repeatActionForever:makeItRain];
     [self runAction:makeItAlwaysRain];
 }
@@ -65,6 +69,15 @@
     [hull addChild:light2];
     
     return hull;
+}
+
+- (SKSpriteNode *)newUmbrella
+{
+    SKSpriteNode *umbrella = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(64, 64)];
+    umbrella.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:32];
+    umbrella.physicsBody.dynamic = NO;
+    
+    return umbrella;
 }
 
 - (SKSpriteNode *)newLight

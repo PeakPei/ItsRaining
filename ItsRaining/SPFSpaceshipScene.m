@@ -73,9 +73,32 @@
 
 - (SKSpriteNode *)newUmbrella
 {
-    SKSpriteNode *umbrella = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(64, 64)];
-    umbrella.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:32];
-    umbrella.physicsBody.dynamic = NO;
+    SKSpriteNode *umbrella = [[SKSpriteNode alloc] init];
+    umbrella.size = CGSizeMake(64, 64);
+    
+    SKSpriteNode *umbrellaTop1 = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(32, 8)];
+    umbrellaTop1.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:umbrellaTop1.size];
+    umbrellaTop1.physicsBody.dynamic = NO;
+    
+    SKSpriteNode *umbrellaTop2 = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(48, 8)];
+    umbrellaTop2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:umbrellaTop2.size];
+    umbrellaTop2.physicsBody.dynamic = NO;
+    
+    SKSpriteNode *umbrellaTop3 = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(64, 8)];
+    umbrellaTop3.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:umbrellaTop3.size];
+    umbrellaTop3.physicsBody.dynamic = NO;
+    
+    SKSpriteNode *umbrellaHandle = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(8, 40)];
+    umbrellaHandle.physicsBody.dynamic = NO;
+    
+    umbrellaTop1.position = CGPointMake(0, 28);
+    umbrellaTop2.position = CGPointMake(0, 20);
+    umbrellaTop3.position = CGPointMake(0, 12);
+    umbrellaHandle.position = CGPointMake(0, -10);
+    [umbrella addChild:umbrellaTop1];
+    [umbrella addChild:umbrellaTop2];
+    [umbrella addChild:umbrellaTop3];
+    [umbrella addChild:umbrellaHandle];
     
     return umbrella;
 }

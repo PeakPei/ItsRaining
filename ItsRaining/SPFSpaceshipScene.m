@@ -75,6 +75,7 @@
 {
     SKSpriteNode *umbrella = [[SKSpriteNode alloc] init];
     umbrella.size = CGSizeMake(64, 64);
+    umbrella.name = @"umbrella";
     
     SKSpriteNode *umbrellaTop1 = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(32, 8)];
     umbrellaTop1.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:umbrellaTop1.size];
@@ -135,6 +136,43 @@
         if (node.position.x > 800)
             [node removeFromParent];
     }];
+}
+
+- (void)touchesBegan:(NSSet *) touches withEvent:(UIEvent *)event
+{
+    SKNode *umbrella = [self childNodeWithName:@"umbrella"];
+    if (umbrella != nil)
+    {
+        [umbrella removeAllActions];
+        UITouch *touch = [touches allObjects][0];
+        CGPoint location = [touch locationInView:touch.view];
+        CGFloat distance = fabsf(location.x - umbrella.position.x);
+        SKAction *move = [SKAction moveToX:location.x duration:(distance / 100.0)];
+        [umbrella runAction:move];
+    }
+}
+
+- (void)touchesMoved:(NSSet *) touches withEvent:(UIEvent *)event
+{
+    SKNode *umbrella = [self childNodeWithName:@"umbrella"];
+    if (umbrella != nil)
+    {
+        [umbrella removeAllActions];
+        UITouch *touch = [touches allObjects][0];
+        CGPoint location = [touch locationInView:touch.view];
+        CGFloat distance = fabsf(location.x - umbrella.position.x);
+        SKAction *move = [SKAction moveToX:location.x duration:(distance / 100.0)];
+        [umbrella runAction:move];
+    }
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    SKNode *umbrella = [self childNodeWithName:@"umbrella"];
+    if (umbrella != nil)
+    {
+        [umbrella removeAllActions];
+    }
 }
 
 @end

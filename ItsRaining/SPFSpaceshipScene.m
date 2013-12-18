@@ -147,7 +147,7 @@
         UITouch *touch = [touches allObjects][0];
         CGPoint location = [touch locationInView:touch.view];
         CGFloat distance = fabsf(location.x - umbrella.position.x);
-        SKAction *move = [SKAction moveToX:location.x duration:(distance / 100.0)];
+        SKAction *move = [SKAction moveToX:location.x duration:(distance / 500.0)];
         [umbrella runAction:move];
     }
 }
@@ -161,7 +161,7 @@
         UITouch *touch = [touches allObjects][0];
         CGPoint location = [touch locationInView:touch.view];
         CGFloat distance = fabsf(location.x - umbrella.position.x);
-        SKAction *move = [SKAction moveToX:location.x duration:(distance / 100.0)];
+        SKAction *move = [SKAction moveToX:location.x duration:(distance / 500.0)];
         [umbrella runAction:move];
     }
 }

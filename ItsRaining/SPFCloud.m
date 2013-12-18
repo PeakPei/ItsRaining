@@ -11,6 +11,9 @@
 
 @implementation SPFCloud
 
+static const uint32_t floorCategory = 0x1 << 0;
+static const uint32_t rainCategory = 0x1 << 1;
+
 - (SPFCloud *)init
 {
     self = [[SPFCloud alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(64, 32)];
@@ -39,6 +42,9 @@
     rain.name = @"rain";
     rain.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:rain.size];
     rain.physicsBody.usesPreciseCollisionDetection = YES;
+    rain.physicsBody.categoryBitMask = rainCategory;
+    rain.physicsBody.collisionBitMask = floorCategory;
+    rain.physicsBody.contactTestBitMask = floorCategory;
     [self addChild:rain];
 }
 

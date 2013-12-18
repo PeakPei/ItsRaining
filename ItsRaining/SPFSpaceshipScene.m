@@ -18,6 +18,9 @@
 
 @implementation SPFSpaceshipScene
 
+static const uint32_t floorCategory = 0x1 << 0;
+static const uint32_t rainCategory = 0x1 << 1;
+
 - (void)didMoveToView:(SKView *)view
 {
     if (!self.contentCreated)
@@ -31,6 +34,9 @@
 {
     self.backgroundColor = [SKColor blackColor];
     self.scaleMode = SKSceneScaleModeAspectFit;
+    self.physicsWorld.contactDelegate = self;
+    
+    [self addChild:[self newFloor]];
     
     SKSpriteNode *spaceship = [self newSpaceship];
     spaceship.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)-150);
@@ -104,6 +110,18 @@
     return umbrella;
 }
 
+- (SKSpriteNode *)newFloor
+{
+    SKSpriteNode *floor = [[SKSpriteNode alloc] initWithColor:[SKColor lightGrayColor] size:CGSizeMake(768, 8)];
+    floor.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:floor.size];
+    floor.physicsBody.dynamic = NO;
+    floor.physicsBody.categoryBitMask = floorCategory;
+    floor.physicsBody.contactTestBitMask = rainCategory;
+    floor.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) -500.0);
+    
+    return floor;
+}
+
 - (SKSpriteNode *)newLight
 {
     SKSpriteNode *light = [[SKSpriteNode alloc] initWithColor:[SKColor yellowColor] size:CGSizeMake(8,8)];
@@ -172,6 +190,19 @@
     if (umbrella != nil)
     {
         [umbrella removeAllActions];
+    }
+}
+
+- (void)didBeginContact:(SKPhysicsContact *)contact
+{
+    if (contact.bodyA.categoryBitMask == rainCategory && contact.bodyB.categoryBitMask == floorCategory)
+    {
+        [contact.bodyA.node removeFromParent];
+    }
+    
+    if (contact.bodyB.categoryBitMask == rainCategory && contact.bodyA.categoryBitMask == floorCategory)
+    {
+        [contact.bodyB.node removeFromParent];
     }
 }
 

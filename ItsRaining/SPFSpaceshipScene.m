@@ -197,12 +197,18 @@ static const uint32_t rainCategory = 0x1 << 1;
 {
     if (contact.bodyA.categoryBitMask == rainCategory && contact.bodyB.categoryBitMask == floorCategory)
     {
-        [contact.bodyA.node removeFromParent];
+        SKAction *fadeAway = [SKAction fadeOutWithDuration: 0.25];
+        SKAction *remove = [SKAction removeFromParent];
+        SKAction *fadeRain = [SKAction sequence:@[fadeAway, remove]];
+        [contact.bodyA.node runAction:fadeRain];
     }
     
     if (contact.bodyB.categoryBitMask == rainCategory && contact.bodyA.categoryBitMask == floorCategory)
     {
-        [contact.bodyB.node removeFromParent];
+        SKAction *fadeAway = [SKAction fadeOutWithDuration: 0.25];
+        SKAction *remove = [SKAction removeFromParent];
+        SKAction *fadeRain = [SKAction sequence:@[fadeAway, remove]];
+        [contact.bodyB.node runAction:fadeRain];
     }
 }
 

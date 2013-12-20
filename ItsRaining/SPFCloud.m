@@ -13,6 +13,7 @@
 
 static const uint32_t floorCategory = 0x1 << 0;
 static const uint32_t rainCategory = 0x1 << 1;
+static const uint32_t umbrellaCategory = 0x1 << 2;
 
 - (SPFCloud *)init
 {
@@ -43,8 +44,8 @@ static const uint32_t rainCategory = 0x1 << 1;
     rain.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:rain.size];
     rain.physicsBody.usesPreciseCollisionDetection = YES;
     rain.physicsBody.categoryBitMask = rainCategory;
-    rain.physicsBody.collisionBitMask = floorCategory;
-    rain.physicsBody.contactTestBitMask = floorCategory;
+    rain.physicsBody.collisionBitMask = floorCategory | umbrellaCategory;
+    rain.physicsBody.contactTestBitMask = floorCategory | umbrellaCategory;
     [self addChild:rain];
 }
 

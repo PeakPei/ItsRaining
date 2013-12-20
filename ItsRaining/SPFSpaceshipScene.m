@@ -20,6 +20,7 @@
 
 static const uint32_t floorCategory = 0x1 << 0;
 static const uint32_t rainCategory = 0x1 << 1;
+static const uint32_t umbrellaCategory = 0x1 << 2;
 
 - (void)didMoveToView:(SKView *)view
 {
@@ -86,17 +87,25 @@ static const uint32_t rainCategory = 0x1 << 1;
     SKSpriteNode *umbrellaTop1 = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(32, 8)];
     umbrellaTop1.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:umbrellaTop1.size];
     umbrellaTop1.physicsBody.dynamic = NO;
+    umbrellaTop1.physicsBody.categoryBitMask = umbrellaCategory;
+    umbrellaTop1.physicsBody.contactTestBitMask = rainCategory;
     
     SKSpriteNode *umbrellaTop2 = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(48, 8)];
     umbrellaTop2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:umbrellaTop2.size];
     umbrellaTop2.physicsBody.dynamic = NO;
+    umbrellaTop2.physicsBody.categoryBitMask = umbrellaCategory;
+    umbrellaTop2.physicsBody.contactTestBitMask = rainCategory;
     
     SKSpriteNode *umbrellaTop3 = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(64, 8)];
     umbrellaTop3.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:umbrellaTop3.size];
     umbrellaTop3.physicsBody.dynamic = NO;
+    umbrellaTop3.physicsBody.categoryBitMask = umbrellaCategory;
+    umbrellaTop3.physicsBody.contactTestBitMask = rainCategory;
     
     SKSpriteNode *umbrellaHandle = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(8, 40)];
     umbrellaHandle.physicsBody.dynamic = NO;
+    umbrellaHandle.physicsBody.categoryBitMask = umbrellaCategory;
+    umbrellaHandle.physicsBody.contactTestBitMask = rainCategory;
     
     umbrellaTop1.position = CGPointMake(0, 28);
     umbrellaTop2.position = CGPointMake(0, 20);
@@ -195,7 +204,7 @@ static const uint32_t rainCategory = 0x1 << 1;
 
 - (void)didBeginContact:(SKPhysicsContact *)contact
 {
-    if (contact.bodyA.categoryBitMask == rainCategory && contact.bodyB.categoryBitMask == floorCategory)
+    if (contact.bodyA.categoryBitMask == rainCategory && (contact.bodyB.categoryBitMask == floorCategory || contact.bodyB.categoryBitMask == umbrellaCategory))
     {
         SKAction *fadeAway = [SKAction fadeOutWithDuration: 0.25];
         SKAction *remove = [SKAction removeFromParent];
@@ -203,7 +212,7 @@ static const uint32_t rainCategory = 0x1 << 1;
         [contact.bodyA.node runAction:fadeRain];
     }
     
-    if (contact.bodyB.categoryBitMask == rainCategory && contact.bodyA.categoryBitMask == floorCategory)
+    if (contact.bodyB.categoryBitMask == rainCategory && (contact.bodyA.categoryBitMask == floorCategory || contact.bodyA.categoryBitMask == umbrellaCategory))
     {
         SKAction *fadeAway = [SKAction fadeOutWithDuration: 0.25];
         SKAction *remove = [SKAction removeFromParent];

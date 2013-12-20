@@ -39,10 +39,6 @@ static const uint32_t umbrellaCategory = 0x1 << 2;
     
     [self addChild:[self newFloor]];
     
-    SKSpriteNode *spaceship = [self newSpaceship];
-    spaceship.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)-150);
-    [self addChild:spaceship];
-    
     SKSpriteNode *umbrella = [self newUmbrella];
     umbrella.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) - 300);
     [self addChild:umbrella];
@@ -52,30 +48,6 @@ static const uint32_t umbrellaCategory = 0x1 << 2;
                                                  [SKAction waitForDuration:2 withRange:1]]];
     SKAction *makeItAlwaysRain = [SKAction repeatActionForever:makeItRain];
     [self runAction:makeItAlwaysRain];
-}
-
-- (SKSpriteNode *)newSpaceship
-{
-    SKSpriteNode *hull = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(64,32)];
-    hull.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:hull.size];
-    hull.physicsBody.dynamic = NO;
-    
-    SKAction *hover = [SKAction sequence:@[
-                                           [SKAction waitForDuration:1.0],
-                                           [SKAction moveByX:100 y:50.0 duration:1.0],
-                                           [SKAction waitForDuration:1.0],
-                                           [SKAction moveByX:-100.0 y:-50 duration:1.0]]];
-    [hull runAction: [SKAction repeatActionForever:hover]];
-    
-    SKSpriteNode *light1 = [self newLight];
-    light1.position = CGPointMake(-28.0, 6.0);
-    [hull addChild:light1];
-    
-    SKSpriteNode *light2 = [self newLight];
-    light2.position = CGPointMake(28.0, 6.0);
-    [hull addChild:light2];
-    
-    return hull;
 }
 
 - (SKSpriteNode *)newUmbrella
@@ -129,19 +101,6 @@ static const uint32_t umbrellaCategory = 0x1 << 2;
     floor.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) -500.0);
     
     return floor;
-}
-
-- (SKSpriteNode *)newLight
-{
-    SKSpriteNode *light = [[SKSpriteNode alloc] initWithColor:[SKColor yellowColor] size:CGSizeMake(8,8)];
-    
-    SKAction *blink = [SKAction sequence:@[
-                                           [SKAction fadeOutWithDuration:0.25],
-                                           [SKAction fadeInWithDuration:0.25]]];
-    SKAction *blinkForever = [SKAction repeatActionForever:blink];
-    [light runAction: blinkForever];
-    
-    return light;
 }
 
 - (void)addCloud

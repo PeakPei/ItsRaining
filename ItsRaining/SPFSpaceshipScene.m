@@ -13,10 +13,13 @@
 @interface SPFSpaceshipScene ()
 
 @property BOOL contentCreated;
+@property NSMutableOrderedSet *currentTouches;
 
 @end
 
 @implementation SPFSpaceshipScene
+
+@synthesize currentTouches;
 
 static const uint32_t floorCategory = 0x1 << 0;
 static const uint32_t rainCategory = 0x1 << 1;
@@ -33,6 +36,8 @@ static const uint32_t umbrellaCategory = 0x1 << 2;
 
 - (void)createSceneContents
 {
+    currentTouches = [[NSMutableOrderedSet alloc] init];
+    
     self.backgroundColor = [SKColor blackColor];
     self.scaleMode = SKSceneScaleModeAspectFit;
     self.physicsWorld.contactDelegate = self;
@@ -129,26 +134,12 @@ static const uint32_t umbrellaCategory = 0x1 << 2;
     SKNode *umbrella = [self childNodeWithName:@"umbrella"];
     if (umbrella != nil)
     {
-        [umbrella removeAllActions];
         UITouch *touch = [touches allObjects][0];
         CGPoint location = [touch locationInView:touch.view];
         CGFloat distance = fabsf(location.x - umbrella.position.x);
         SKAction *move = [SKAction moveToX:location.x duration:(distance / 500.0)];
         [umbrella runAction:move];
-    }
-}
-
-- (void)touchesMoved:(NSSet *) touches withEvent:(UIEvent *)event
-{
-    SKNode *umbrella = [self childNodeWithName:@"umbrella"];
-    if (umbrella != nil)
-    {
-        [umbrella removeAllActions];
-        UITouch *touch = [touches allObjects][0];
-        CGPoint location = [touch locationInView:touch.view];
-        CGFloat distance = fabsf(location.x - umbrella.position.x);
-        SKAction *move = [SKAction moveToX:location.x duration:(distance / 500.0)];
-        [umbrella runAction:move];
+        [currentTouches addObject:touch];
     }
 }
 
@@ -157,7 +148,20 @@ static const uint32_t umbrellaCategory = 0x1 << 2;
     SKNode *umbrella = [self childNodeWithName:@"umbrella"];
     if (umbrella != nil)
     {
-        [umbrella removeAllActions];
+        UITouch *touch = [touches allObjects][0];
+        [currentTouches removeObject:touch];
+        if (currentTouches.count > 0)
+        {
+            UITouch *oldTouch = [currentTouches lastObject];
+            CGPoint location = [oldTouch locationInView:touch.view];
+            CGFloat distance = fabsf(location.x - umbrella.position.x);
+            SKAction *move = [SKAction moveToX:location.x duration:(distance / 500.0)];
+            [umbrella runAction:move];
+        }
+        else
+        {
+            [umbrella removeAllActions];
+        }
     }
 }
 

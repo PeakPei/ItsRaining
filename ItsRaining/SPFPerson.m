@@ -11,6 +11,8 @@
 
 @implementation SPFPerson
 
+@synthesize isWet;
+
 - (SPFPerson *)init
 {
     self = [[SPFPerson alloc] initWithColor:[SKColor darkGrayColor] size:CGSizeMake(8, 24)];
@@ -25,6 +27,8 @@
     SKAction *personMovement = [SKAction sequence:@[walk, finishWalking]];
     
     [self runAction:personMovement];
+    
+    isWet = NO;
     
     return self;
 }

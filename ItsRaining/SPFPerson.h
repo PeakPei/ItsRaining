@@ -10,6 +10,8 @@
 
 @interface SPFPerson : SKSpriteNode
 
+@property BOOL isWet;
+
 - (SPFPerson *)init;
 
 @end

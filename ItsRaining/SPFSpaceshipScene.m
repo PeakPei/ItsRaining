@@ -214,15 +214,20 @@
     
     if (otherBody.categoryBitMask == personCategory)
     {
-        SKAction *fadeAway = [SKAction fadeOutWithDuration: 0.25];
-        SKAction *remove = [SKAction removeFromParent];
-        SKAction *fadeObject = [SKAction sequence:@[fadeAway, remove]];
-        [rainBody.node runAction:fadeObject];
-        [otherBody.node runAction:fadeObject];
+        SPFPerson *person = (SPFPerson *)otherBody.node;
+        if (!person.isWet)
+        {
+            person.isWet = YES;
+            SKAction *fadeAway = [SKAction fadeOutWithDuration: 0.25];
+            SKAction *remove = [SKAction removeFromParent];
+            SKAction *fadeObject = [SKAction sequence:@[fadeAway, remove]];
+            [rainBody.node runAction:fadeObject];
+            [otherBody.node runAction:fadeObject];
         
-        currentNumberOfHitPeople++;
-        SKLabelNode *scoreLabel = (SKLabelNode *)[self childNodeWithName:@"scoreLabel"];
-        scoreLabel.text = [NSString stringWithFormat:@"%d", (int)currentNumberOfHitPeople];
+            currentNumberOfHitPeople++;
+            SKLabelNode *scoreLabel = (SKLabelNode *)[self childNodeWithName:@"scoreLabel"];
+            scoreLabel.text = [NSString stringWithFormat:@"%d", (int)currentNumberOfHitPeople];
+        }
     }
 }
 

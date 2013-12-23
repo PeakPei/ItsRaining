@@ -121,7 +121,7 @@ static const uint32_t personCategory = 0x1 << 3;
 - (SKLabelNode *)newScoreLabel
 {
     SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Menlo-BoldItalic"];
-    scoreLabel.name = @"helloNode";
+    scoreLabel.name = @"scoreLabel";
     scoreLabel.text = [NSString stringWithFormat:@"%d", (int)currentNumberOfHitPeople];
     scoreLabel.fontSize = 42;
     scoreLabel.position = CGPointMake(CGRectGetMaxX(self.frame) - scoreLabel.frame.size.width ,CGRectGetMaxY(self.frame) - scoreLabel.frame.size.height);
@@ -140,8 +140,9 @@ static const uint32_t personCategory = 0x1 << 3;
     SKSpriteNode *person = [[SKSpriteNode alloc] initWithColor:[SKColor darkGrayColor] size:CGSizeMake(8, 24)];
     person.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:person.size];
     person.physicsBody.dynamic = NO;
+    person.physicsBody.categoryBitMask = personCategory;
     person.physicsBody.contactTestBitMask = rainCategory;
-    person.physicsBody.collisionBitMask = floorCategory;
+    person.physicsBody.collisionBitMask = floorCategory | rainCategory;
     
     person.position = CGPointMake(self.size.width + 10, CGRectGetMidY(self.frame) - 484);
     
@@ -228,6 +229,19 @@ static const uint32_t personCategory = 0x1 << 3;
         SKAction *remove = [SKAction removeFromParent];
         SKAction *fadeRain = [SKAction sequence:@[fadeAway, remove]];
         [rainBody.node runAction:fadeRain];
+    }
+    
+    if (otherBody.categoryBitMask == personCategory)
+    {
+        SKAction *fadeAway = [SKAction fadeOutWithDuration: 0.25];
+        SKAction *remove = [SKAction removeFromParent];
+        SKAction *fadeObject = [SKAction sequence:@[fadeAway, remove]];
+        [rainBody.node runAction:fadeObject];
+        [otherBody.node runAction:fadeObject];
+        
+        currentNumberOfHitPeople++;
+        SKLabelNode *scoreLabel = (SKLabelNode *)[self childNodeWithName:@"scoreLabel"];
+        scoreLabel.text = [NSString stringWithFormat:@"%d", (int)currentNumberOfHitPeople];
     }
 }
 

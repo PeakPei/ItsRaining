@@ -45,7 +45,7 @@ static const uint32_t personCategory = 0x1 << 3;
     rain.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:rain.size];
     rain.physicsBody.usesPreciseCollisionDetection = YES;
     rain.physicsBody.categoryBitMask = rainCategory;
-    rain.physicsBody.collisionBitMask = floorCategory | umbrellaCategory;
+    rain.physicsBody.collisionBitMask = floorCategory | umbrellaCategory | personCategory;
     rain.physicsBody.contactTestBitMask = floorCategory | umbrellaCategory | personCategory;
     [self addChild:rain];
 }

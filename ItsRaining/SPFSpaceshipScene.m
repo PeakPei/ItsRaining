@@ -14,12 +14,14 @@
 
 @property BOOL contentCreated;
 @property NSMutableOrderedSet *currentTouches;
+@property NSInteger *currentNumberOfHitPeople;
 
 @end
 
 @implementation SPFSpaceshipScene
 
 @synthesize currentTouches;
+@synthesize currentNumberOfHitPeople;
 
 static const uint32_t floorCategory = 0x1 << 0;
 static const uint32_t rainCategory = 0x1 << 1;
@@ -38,10 +40,13 @@ static const uint32_t personCategory = 0x1 << 3;
 - (void)createSceneContents
 {
     currentTouches = [[NSMutableOrderedSet alloc] init];
+    currentNumberOfHitPeople = 0;
     
     self.backgroundColor = [SKColor blackColor];
     self.scaleMode = SKSceneScaleModeAspectFit;
     self.physicsWorld.contactDelegate = self;
+    
+    [self addChild:[self newScoreLabel]];
     
     [self addChild:[self newFloor]];
     
@@ -111,6 +116,16 @@ static const uint32_t personCategory = 0x1 << 3;
     floor.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) -500.0);
     
     return floor;
+}
+
+- (SKLabelNode *)newScoreLabel
+{
+    SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Menlo-BoldItalic"];
+    scoreLabel.name = @"helloNode";
+    scoreLabel.text = [NSString stringWithFormat:@"%d", (int)currentNumberOfHitPeople];
+    scoreLabel.fontSize = 42;
+    scoreLabel.position = CGPointMake(CGRectGetMaxX(self.frame) - scoreLabel.frame.size.width ,CGRectGetMaxY(self.frame) - scoreLabel.frame.size.height);
+    return scoreLabel;
 }
 
 - (void)addCloud

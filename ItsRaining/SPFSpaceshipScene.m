@@ -24,6 +24,7 @@
 static const uint32_t floorCategory = 0x1 << 0;
 static const uint32_t rainCategory = 0x1 << 1;
 static const uint32_t umbrellaCategory = 0x1 << 2;
+static const uint32_t personCategory = 0x1 << 3;
 
 - (void)didMoveToView:(SKView *)view
 {
@@ -53,6 +54,8 @@ static const uint32_t umbrellaCategory = 0x1 << 2;
                                                  [SKAction waitForDuration:2 withRange:1]]];
     SKAction *makeItAlwaysRain = [SKAction repeatActionForever:makeItRain];
     [self runAction:makeItAlwaysRain];
+    
+    [self addChild:[self newPerson]];
 }
 
 - (SKSpriteNode *)newUmbrella
@@ -102,7 +105,7 @@ static const uint32_t umbrellaCategory = 0x1 << 2;
     floor.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:floor.size];
     floor.physicsBody.dynamic = NO;
     floor.physicsBody.categoryBitMask = floorCategory;
-    floor.physicsBody.contactTestBitMask = rainCategory;
+    floor.physicsBody.contactTestBitMask = rainCategory | personCategory;
     floor.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) -500.0);
     
     return floor;
@@ -113,6 +116,25 @@ static const uint32_t umbrellaCategory = 0x1 << 2;
     SPFCloud *cloud = [[SPFCloud alloc] init];
     cloud.position = CGPointMake(-64, CGRectGetMidY(self.frame) + [SPFUtilities skRandWithLow:100 andHigh:400]);
     [self addChild:cloud];
+}
+
+- (SKSpriteNode *)newPerson
+{
+    SKSpriteNode *person = [[SKSpriteNode alloc] initWithColor:[SKColor darkGrayColor] size:CGSizeMake(8, 24)];
+    person.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:person.size];
+    person.physicsBody.dynamic = NO;
+    person.physicsBody.contactTestBitMask = rainCategory;
+    person.physicsBody.collisionBitMask = floorCategory;
+    
+    person.position = CGPointMake(self.size.width + 10, CGRectGetMidY(self.frame) - 484);
+    
+    SKAction *walk = [SKAction moveByX:-1200 y:0.0 duration:[SPFUtilities skRandWithLow:4 andHigh:12]];
+    SKAction *finishWalking = [SKAction removeFromParent];
+    SKAction *personMovement = [SKAction sequence:@[walk, finishWalking]];
+    
+    [person runAction:personMovement];
+    
+    return person;
 }
 
 - (void)didSimulatePhysics

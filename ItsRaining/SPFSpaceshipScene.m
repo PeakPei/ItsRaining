@@ -49,13 +49,15 @@ static const uint32_t personCategory = 0x1 << 3;
     umbrella.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) - 300);
     [self addChild:umbrella];
     
-    SKAction *makeItRain = [SKAction sequence: @[
-                                                 [SKAction performSelector:@selector(addCloud) onTarget:self],
-                                                 [SKAction waitForDuration:2 withRange:1]]];
+    SKAction *makeItRain = [SKAction sequence:@[[SKAction performSelector:@selector(addCloud) onTarget:self],
+                                                [SKAction waitForDuration:2 withRange:1]]];
     SKAction *makeItAlwaysRain = [SKAction repeatActionForever:makeItRain];
     [self runAction:makeItAlwaysRain];
     
-    [self addChild:[self newPerson]];
+    SKAction *makePeople = [SKAction sequence:@[[SKAction performSelector:@selector(addPerson) onTarget:self],
+                                                [SKAction waitForDuration:3 withRange:2]]];
+    SKAction *makePeopleContinuously = [SKAction repeatActionForever:makePeople];
+    [self runAction:makePeopleContinuously];
 }
 
 - (SKSpriteNode *)newUmbrella
@@ -118,7 +120,7 @@ static const uint32_t personCategory = 0x1 << 3;
     [self addChild:cloud];
 }
 
-- (SKSpriteNode *)newPerson
+- (void)addPerson
 {
     SKSpriteNode *person = [[SKSpriteNode alloc] initWithColor:[SKColor darkGrayColor] size:CGSizeMake(8, 24)];
     person.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:person.size];
@@ -134,7 +136,9 @@ static const uint32_t personCategory = 0x1 << 3;
     
     [person runAction:personMovement];
     
-    return person;
+    [self addChild:person];
+    
+    return;
 }
 
 - (void)didSimulatePhysics

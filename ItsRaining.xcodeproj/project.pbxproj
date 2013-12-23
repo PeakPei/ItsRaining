@@ -26,6 +26,7 @@
 		3283B1DB185CEF0400C28BF7 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3283B1DA185CEF0400C28BF7 /* SpriteKit.framework */; };
 		3283B1DE185CEF8700C28BF7 /* SPFHelloScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3283B1DD185CEF8700C28BF7 /* SPFHelloScene.m */; };
 		3283B1E1185CF3C700C28BF7 /* SPFSpaceshipScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3283B1E0185CF3C700C28BF7 /* SPFSpaceshipScene.m */; };
+		3B4E7A7A18688FC20022E6AF /* SPFPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E7A7918688FC20022E6AF /* SPFPerson.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,8 @@
 		3283B1DD185CEF8700C28BF7 /* SPFHelloScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPFHelloScene.m; sourceTree = "<group>"; };
 		3283B1DF185CF3C700C28BF7 /* SPFSpaceshipScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPFSpaceshipScene.h; sourceTree = "<group>"; };
 		3283B1E0185CF3C700C28BF7 /* SPFSpaceshipScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPFSpaceshipScene.m; sourceTree = "<group>"; };
+		3B4E7A7818688FC20022E6AF /* SPFPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPFPerson.h; sourceTree = "<group>"; };
+		3B4E7A7918688FC20022E6AF /* SPFPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPFPerson.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +146,8 @@
 				32776F3E185D2A4D003DFD71 /* SPFCloud.m */,
 				32776F40185D3691003DFD71 /* SPFUtilities.h */,
 				32776F41185D3691003DFD71 /* SPFUtilities.m */,
+				3B4E7A7818688FC20022E6AF /* SPFPerson.h */,
+				3B4E7A7918688FC20022E6AF /* SPFPerson.m */,
 			);
 			path = ItsRaining;
 			sourceTree = "<group>";
@@ -283,6 +288,7 @@
 				3283B1E1185CF3C700C28BF7 /* SPFSpaceshipScene.m in Sources */,
 				3283B1BC185CEEE700C28BF7 /* SPFViewController.m in Sources */,
 				3283B1B2185CEEE700C28BF7 /* main.m in Sources */,
+				3B4E7A7A18688FC20022E6AF /* SPFPerson.m in Sources */,
 				32776F42185D3691003DFD71 /* SPFUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

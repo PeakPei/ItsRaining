@@ -9,6 +9,7 @@
 #import "SPFSpaceshipScene.h"
 #import "SPFCloud.h"
 #import "SPFUtilities.h"
+#import "SPFPerson.h"
 
 @interface SPFSpaceshipScene ()
 
@@ -132,24 +133,9 @@
 
 - (void)addPerson
 {
-    SKSpriteNode *person = [[SKSpriteNode alloc] initWithColor:[SKColor darkGrayColor] size:CGSizeMake(8, 24)];
-    person.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:person.size];
-    person.physicsBody.dynamic = NO;
-    person.physicsBody.categoryBitMask = personCategory;
-    person.physicsBody.contactTestBitMask = rainCategory;
-    person.physicsBody.collisionBitMask = floorCategory | rainCategory;
-    
-    person.position = CGPointMake(self.size.width + 10, CGRectGetMidY(self.frame) - 484);
-    
-    SKAction *walk = [SKAction moveByX:-1200 y:0.0 duration:[SPFUtilities skRandWithLow:4 andHigh:12]];
-    SKAction *finishWalking = [SKAction removeFromParent];
-    SKAction *personMovement = [SKAction sequence:@[walk, finishWalking]];
-    
-    [person runAction:personMovement];
-    
+    SPFPerson *person = [[SPFPerson alloc] init];
+    person.position = CGPointMake(800, CGRectGetMidY(self.frame) - 484);
     [self addChild:person];
-    
-    return;
 }
 
 - (void)didSimulatePhysics

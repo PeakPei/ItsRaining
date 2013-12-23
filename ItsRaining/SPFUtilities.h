@@ -10,6 +10,12 @@
 
 @interface SPFUtilities : NSObject
 
+extern uint32_t const floorCategory;
+extern uint32_t const rainCategory;
+extern uint32_t const umbrellaCategory;
+extern uint32_t const personCategory;
+
+
 + (CGFloat)skRandf;
 + (CGFloat)skRandWithLow:(CGFloat)low andHigh:(CGFloat)high;
 

@@ -11,11 +11,6 @@
 
 @implementation SPFCloud
 
-static const uint32_t floorCategory = 0x1 << 0;
-static const uint32_t rainCategory = 0x1 << 1;
-static const uint32_t umbrellaCategory = 0x1 << 2;
-static const uint32_t personCategory = 0x1 << 3;
-
 - (SPFCloud *)init
 {
     self = [[SPFCloud alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(64, 32)];

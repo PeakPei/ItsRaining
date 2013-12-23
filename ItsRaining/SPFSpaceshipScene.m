@@ -15,7 +15,7 @@
 
 @property BOOL contentCreated;
 @property NSMutableOrderedSet *currentTouches;
-@property NSInteger *currentNumberOfHitPeople;
+@property int currentNumberOfHitPeople;
 
 @end
 
@@ -118,7 +118,7 @@
 {
     SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Menlo-BoldItalic"];
     scoreLabel.name = @"scoreLabel";
-    scoreLabel.text = [NSString stringWithFormat:@"%d", (int)currentNumberOfHitPeople];
+    scoreLabel.text = [NSString stringWithFormat:@"%d", currentNumberOfHitPeople];
     scoreLabel.fontSize = 42;
     scoreLabel.position = CGPointMake(CGRectGetMaxX(self.frame) - scoreLabel.frame.size.width ,CGRectGetMaxY(self.frame) - scoreLabel.frame.size.height);
     return scoreLabel;
@@ -226,7 +226,7 @@
         
             currentNumberOfHitPeople++;
             SKLabelNode *scoreLabel = (SKLabelNode *)[self childNodeWithName:@"scoreLabel"];
-            scoreLabel.text = [NSString stringWithFormat:@"%d", (int)currentNumberOfHitPeople];
+            scoreLabel.text = [NSString stringWithFormat:@"%d", currentNumberOfHitPeople];
         }
     }
 }

@@ -208,20 +208,26 @@ static const uint32_t personCategory = 0x1 << 3;
 
 - (void)didBeginContact:(SKPhysicsContact *)contact
 {
-    if (contact.bodyA.categoryBitMask == rainCategory && (contact.bodyB.categoryBitMask == floorCategory || contact.bodyB.categoryBitMask == umbrellaCategory))
+    // Contact is always between rain and something else.
+    SKPhysicsBody *rainBody;
+    SKPhysicsBody *otherBody;
+    if (contact.bodyA.categoryBitMask == rainCategory)
     {
-        SKAction *fadeAway = [SKAction fadeOutWithDuration: 0.25];
-        SKAction *remove = [SKAction removeFromParent];
-        SKAction *fadeRain = [SKAction sequence:@[fadeAway, remove]];
-        [contact.bodyA.node runAction:fadeRain];
+        rainBody = contact.bodyA;
+        otherBody = contact.bodyB;
+    }
+    else if (contact.bodyB.categoryBitMask == rainCategory)
+    {
+        rainBody = contact.bodyB;
+        otherBody = contact.bodyA;
     }
     
-    if (contact.bodyB.categoryBitMask == rainCategory && (contact.bodyA.categoryBitMask == floorCategory || contact.bodyA.categoryBitMask == umbrellaCategory))
+    if (otherBody.categoryBitMask == floorCategory || otherBody.categoryBitMask == umbrellaCategory)
     {
         SKAction *fadeAway = [SKAction fadeOutWithDuration: 0.25];
         SKAction *remove = [SKAction removeFromParent];
         SKAction *fadeRain = [SKAction sequence:@[fadeAway, remove]];
-        [contact.bodyB.node runAction:fadeRain];
+        [rainBody.node runAction:fadeRain];
     }
 }
 
